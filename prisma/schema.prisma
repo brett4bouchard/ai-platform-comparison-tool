@@ -1,0 +1,49 @@
+// This is your Prisma schema file,
+// learn more about it in the docs: https://pris.ly/d/prisma-schema
+
+generator client {
+  provider = "prisma-client-js"
+}
+
+datasource db {
+  provider = "sqlite"
+  url      = env("DATABASE_URL")
+}
+
+model User {
+  id                  Int      @id @default(autoincrement())
+  email               String   @unique
+  createdAt           DateTime @default(now()) @map("created_at")
+  subscriptionStatus  String   @default("free") @map("subscription_status")
+  searches            Search[]
+
+  @@map("users")
+}
+
+model Platform {
+  id           Int      @id @default(autoincrement())
+  name         String
+  description  String?
+  websiteUrl   String?  @map("website_url")
+  pricingUrl   String?  @map("pricing_url")
+  pricingModel String?  @map("pricing_model")
+  categoryTags String?  @map("category_tags") // JSON string
+  criteriaScores String? @map("criteria_scores") // JSON string
+  status       String   @default("active")
+  createdAt    DateTime @default(now()) @map("created_at")
+  updatedAt    DateTime @updatedAt @map("updated_at")
+
+  @@map("platforms")
+}
+
+model Search {
+  id               Int      @id @default(autoincrement())
+  userId           Int?     @map("user_id")
+  projectType      String?  @map("project_type")
+  criteriaSelected String?  @map("criteria_selected") // JSON string
+  resultsReturned  String?  @map("results_returned")  // JSON string
+  createdAt        DateTime @default(now()) @map("created_at")
+  user             User?    @relation(fields: [userId], references: [id])
+
+  @@map("searches")
+}
