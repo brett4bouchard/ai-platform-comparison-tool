@@ -2,6 +2,8 @@
 
 A production-ready web application that helps AI consultants and solo practitioners find the best no-code/low-code AI platforms for their specific project requirements.
 
+🚀 **Now deployed on Vercel with PostgreSQL database!**
+
 ## Features
 
 - **Intelligent Platform Matching**: Advanced scoring algorithm that matches platforms based on project requirements
