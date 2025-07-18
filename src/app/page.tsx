@@ -9,6 +9,7 @@ export default function Home() {
           <p className="text-xl text-gray-600 mb-8 max-w-3xl mx-auto">
             Find the perfect no-code/low-code AI platform for your project. 
             Get personalized recommendations based on your specific requirements.
+            🚀 Now with 28+ platforms and intelligent matching!
           </p>
           <div className="space-x-4">
             <a href="/comparison" className="inline-block bg-blue-600 text-white px-8 py-3 rounded-lg font-semibold hover:bg-blue-700 transition-colors">
